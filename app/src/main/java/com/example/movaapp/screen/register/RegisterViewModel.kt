@@ -4,10 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.google.firebase.auth.FirebaseAuth
+import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 
+@HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val firebaseAuth: FirebaseAuth
 ): ViewModel() {

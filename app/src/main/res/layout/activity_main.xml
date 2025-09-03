@@ -27,11 +27,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:itemIconTint="@color/bottom_nav_color_selector"
+        android:background="#1A191E"
         app:itemTextColor="@color/bottom_nav_color_selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/fragmentContainerView"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:elevation="0dp"
+        app:itemActiveIndicatorStyle="@color/red"
         app:menu="@menu/bottom_nav" />
 </androidx.constraintlayout.widget.ConstraintLayout>

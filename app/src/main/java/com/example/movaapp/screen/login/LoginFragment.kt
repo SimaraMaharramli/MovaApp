@@ -9,8 +9,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.movaapp.R
 import com.example.movaapp.databinding.FragmentHomeBinding
 import com.example.movaapp.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     override fun onCreateView(

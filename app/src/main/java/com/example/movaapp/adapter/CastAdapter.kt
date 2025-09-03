@@ -4,9 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movaapp.databinding.ItemCastBinding
+import com.example.movaapp.model.Cast
 
 class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>(){
-    private val castList = arrayListOf<String>()
+    private val castList = arrayListOf<Cast>()
 
     class CastViewHolder(val itemCastBinding: ItemCastBinding) :
         RecyclerView.ViewHolder(itemCastBinding.root)
@@ -22,11 +23,11 @@ class CastAdapter : RecyclerView.Adapter<CastAdapter.CastViewHolder>(){
 
     override fun onBindViewHolder(holder: CastViewHolder, position: Int) {
         val item = castList[position]
-//        holder.itemCastBinding.cast = item
+        holder.itemCastBinding.cast = item
 
     }
 
-    fun updateList(newList: List<String>){
+    fun updateList(newList: List<Cast>){
         castList.clear()
         castList.addAll(newList)
         notifyDataSetChanged()

@@ -48,6 +48,8 @@ android {
 
 dependencies {
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.room.runtime.android)
+    implementation(libs.androidx.media3.common.ktx)
     val lifecycle_version = "2.9.2"
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -75,4 +77,9 @@ dependencies {
     implementation( "com.airbnb.android:lottie:6.6.7")
     implementation("com.tbuonomo:dotsindicator:5.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    val room_version = "2.7.2"
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 }

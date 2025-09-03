@@ -16,13 +16,15 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginPasswordFragment : Fragment() {
-    private lateinit var binding: FragmentLoginPasswordBinding
-    private val viewModel by viewModels<LoginPasswordViewModel> ()
+    lateinit var binding: FragmentLoginPasswordBinding
+    private val viewModel by viewModels<LoginPasswordViewModel>()
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentLoginPasswordBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentLoginPasswordBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -43,9 +45,12 @@ class LoginPasswordFragment : Fragment() {
 
         binding.imageViewBacktoLogin.setOnClickListener {
             findNavController().popBackStack()
-            }
-
+        }
     }
+
+
+
+
 
     private fun login(){
 
@@ -58,7 +63,7 @@ class LoginPasswordFragment : Fragment() {
     private fun setUserLogin(){
         val sp = requireContext().getSharedPreferences("local_shared", Context.MODE_PRIVATE)
 
-        sp.edit().putBoolean("isLogin", true)
+        sp.edit().putBoolean("isLogin", true).apply()
     }
 
     private fun observeData(){
@@ -69,7 +74,7 @@ class LoginPasswordFragment : Fragment() {
         viewModel.isSuccess.observe(viewLifecycleOwner){
             if(it){
                 setUserLogin()
-                Toast.makeText(context, "Giris basarili", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(LoginPasswordFragmentDirections.actionLoginPasswordFragmentToHomeFragment())
             }
         }
     }
@@ -109,6 +114,9 @@ class LoginPasswordFragment : Fragment() {
         }
 
         return isValid
-   }
+       }
+
+
 
 }
+

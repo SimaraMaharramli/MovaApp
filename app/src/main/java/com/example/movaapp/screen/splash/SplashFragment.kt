@@ -14,24 +14,24 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SplashFragment : Fragment() {
-    private lateinit var binding: FragmentSplashBinding
+    lateinit var binding: FragmentSplashBinding
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentSplashBinding.inflate(inflater, container, false)
+    ): View? {
+        binding = FragmentSplashBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            checkOnboardingStatus()
-//        }, 2000)
-
         checkFlow()
     }
+
+
+
     private fun checkFlow(){
 
         val sp = requireContext().getSharedPreferences("local_shared", Context.MODE_PRIVATE)
@@ -39,29 +39,21 @@ class SplashFragment : Fragment() {
         val isLogin = sp.getBoolean("isLogin", false)
 
         lifecycleScope.launch {
-            delay(5000)
+            delay(3000)
 
             if(!isOnboardingCompleted){
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragment2ToOnBoardingFragment())
             } else if(isLogin){
-                Toast.makeText(context, "Home", Toast.LENGTH_SHORT).show()
-            } else {
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragment2ToHomeFragment())
+            } else {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragment2ToLoginFragment())
             }
+
+            }
+
+
+
+     }
 }
 
 
-
-        }
-
-
-
-//    private fun checkOnboardingStatus() {
-//        val isFirstTime = SharedPreferencesManager.isFirstTime(requireContext())
-//        if (isFirstTime) {
-//            findNavController().navigate(SplashFragmentDirections.actionSplashFragment2ToOnBoardingFragment())
-//        } else {
-//            findNavController().navigate(SplashFragmentDirections.actionSplashFragment2ToHomeFragment())
-//        }
-//    }
-}

@@ -10,7 +10,7 @@ class TopMoviesAdapter: RecyclerView.Adapter<TopMoviesAdapter.TopMoviesViewHolde
 
 
     private val movieList = arrayListOf<Result>()
-
+    private var onItemClickListener: ((Result) -> Unit)? = null
 
     class TopMoviesViewHolder(val itemTopMoviesBinding: ItemTopMoviesBinding):
         RecyclerView.ViewHolder(itemTopMoviesBinding.root)
@@ -27,8 +27,15 @@ class TopMoviesAdapter: RecyclerView.Adapter<TopMoviesAdapter.TopMoviesViewHolde
     override fun onBindViewHolder(holder: TopMoviesViewHolder, position: Int) {
         val item = movieList[position]
         holder.itemTopMoviesBinding.movie = item
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(item)
+        }
     }
 
+
+    fun setOnItemClickListener(listener: (Result) -> Unit) {
+        onItemClickListener = listener
+    }
     fun updateList(newList: List<Result>){
         movieList.clear()
         movieList.addAll(newList)
