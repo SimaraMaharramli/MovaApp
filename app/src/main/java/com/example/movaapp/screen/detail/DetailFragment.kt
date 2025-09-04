@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.movaapp.adapter.CastAdapter
 import com.example.movaapp.adapter.TopMoviesAdapter
@@ -46,6 +47,11 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        binding.imageView11.setOnClickListener {
+
+            findNavController().popBackStack()
+        }
         val movieId = args.movieId
         Log.e("DetailFragment", "Received movie ID: $movieId")
 
@@ -60,6 +66,10 @@ class DetailFragment : Fragment() {
         binding.rvTrailer.adapter = trailerAdapter
         binding.rvSimilar.adapter=similrAdapter
         binding.rvComment.adapter=commentAdapter
+
+        binding.rvTrailer.visibility=View.VISIBLE
+        binding.rvSimilar.visibility=View.GONE
+        binding.rvComment.visibility=View.GONE
 
         trailerAdapter.onItemClick = { video ->
             openYoutube(requireContext(), video.key.toString())

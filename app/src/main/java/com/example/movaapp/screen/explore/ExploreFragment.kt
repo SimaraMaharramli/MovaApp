@@ -64,7 +64,7 @@ class ExploreFragment : Fragment() {
                 val searchText = s.toString().trim()
                 viewModel1.searchMovies(searchText)
 
-                // UI'ı hemen güncelle (yükleniyor göstergesi vs.)
+
                 if (searchText.isEmpty()) {
                     binding.rvAllMovies.visibility = View.VISIBLE
                     binding.rvTopSearches.visibility = View.GONE
@@ -80,7 +80,7 @@ class ExploreFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel1.searchResults.observe(viewLifecycleOwner) { movies ->
-            // ViewModel'den gelen sonuçları adapter'a ilet
+
             adapters.updateList(movies)
         }
     }

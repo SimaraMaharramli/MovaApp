@@ -28,6 +28,11 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.buttonSignUp.setOnClickListener(){
+            validateInputs()
+            register()
+            observeData()
+        }
     }
 
     private fun register(){

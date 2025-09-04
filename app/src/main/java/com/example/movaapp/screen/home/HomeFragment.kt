@@ -20,9 +20,6 @@ class HomeFragment : Fragment() {
     private val popularMoviesAdapter = TopMoviesAdapter()
     private val upcomingMoviesAdapter = TopMoviesAdapter()
 
-//    textView7
-//    textView3
-//    textView9
 
 
     override fun onCreateView(
