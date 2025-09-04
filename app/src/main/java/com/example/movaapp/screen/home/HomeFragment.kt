@@ -66,13 +66,13 @@ class HomeFragment : Fragment() {
 
     private fun observeData(){
         viewModel.moviespop.observe(viewLifecycleOwner){
-            topMoviesAdapter.updateList(it)
+            popularMoviesAdapter.updateList(it)
         }
         viewModel.moviestop.observe(viewLifecycleOwner){
             topMoviesAdapter.updateList(it)
         }
         viewModel.moviesupcoming.observe(viewLifecycleOwner){
-            topMoviesAdapter.updateList(it)
+            upcomingMoviesAdapter.updateList(it)
         }
 
 
